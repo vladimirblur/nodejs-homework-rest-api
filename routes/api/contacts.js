@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/", auth, controllerWrapper(contacts.listContacts));
 
-router.get("/:contactId", controllerWrapper(contacts.getContactById));
+router.get("/:contactId", auth, controllerWrapper(contacts.getContactById));
 
 router.post(
   "/",
@@ -17,7 +17,7 @@ router.post(
   controllerWrapper(contacts.addContact)
 );
 
-router.delete("/:contactId", controllerWrapper(contacts.removeContact));
+router.delete("/:contactId", auth, controllerWrapper(contacts.removeContact));
 
 router.put(
   "/:contactId",
