@@ -10,8 +10,8 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  if (!user || !user.validPassword(password)) {
-    throw new Unauthorized("Email or password is wrong");
+  if (!user || !user.verify || !user.validPassword(password)) {
+    throw new Unauthorized("Email or password is wrong, or not verify");
   }
 
   const payload = {
