@@ -12,6 +12,9 @@ const validation = (schema, action) => {
         case "updateStatus":
           throw new BadRequest(`missing field favorite`);
 
+        case "verifyEmail":
+          throw new BadRequest("missing required field email");
+
         default:
           throw new BadRequest(`missing fields`);
       }
